@@ -1,0 +1,79 @@
+﻿@model MeuProjeto.Models.CalculoIMC
+@{
+    ViewBag.Title = "Calculo IMC";
+}
+
+<h2>Calculo IMC</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+</head>
+<body>
+    
+    @using (Html.BeginForm("inicio", "Principal", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group ">
+            @Html.LabelFor(model => model.Peso, htmlAttributes: new { @class = "control-label col-lg-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Peso, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Peso, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Altura, htmlAttributes: new { @class = "control-label col-lg-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Altura, new { htmlAttributes = new { @class = "form-control", @type="text"} })
+                @Html.ValidationMessageFor(model => model.Altura, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Calcular" class="btn btn-default" />
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Resultado: <strong>@Model.Result </strong>
+            </div>
+        </div>
+    </div>
+    }
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+}
+
+
+
+
+
+
+
